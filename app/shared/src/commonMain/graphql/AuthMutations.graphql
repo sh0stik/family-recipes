@@ -1,0 +1,46 @@
+mutation Login($username: String!, $password: String!) {
+    login(username: $username, password: $password)
+}
+
+mutation CreateUser($username: String!, $email: String!, $password: String!, $inviteCode: String!, $acceptedTerms: Boolean) {
+    createUser(username: $username, email: $email, password: $password, inviteCode: $inviteCode, acceptedTerms: $acceptedTerms)
+}
+
+mutation Logout {
+    logout
+}
+
+mutation RequestPasswordReset($email: String!) {
+    requestPasswordReset(email: $email)
+}
+
+mutation ResetPassword($token: String!, $newPassword: String!) {
+    resetPassword(token: $token, newPassword: $newPassword)
+}
+
+mutation ChangePassword($currentPassword: String!, $newPassword: String!) {
+    changePassword(currentPassword: $currentPassword, newPassword: $newPassword)
+}
+
+mutation UpdateUsername($newUsername: String!) {
+    updateUsername(newUsername: $newUsername) {
+        id
+        username
+        email
+        preferredLocale
+    }
+}
+
+mutation UpdatePreferredLocale($locale: String!) {
+    updatePreferredLocale(locale: $locale) {
+        id
+        username
+        email
+        preferredLocale
+    }
+}
+
+# Error codes (extensions.code): WRONG_PASSWORD, ADMIN_CANNOT_DELETE, RATE_LIMITED.
+mutation DeleteAccount($password: String!) {
+    deleteAccount(password: $password)
+}

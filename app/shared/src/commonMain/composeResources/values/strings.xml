@@ -1,0 +1,301 @@
+<resources>
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="add">Add</string>
+
+    <!-- Auth common -->
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password_label">Confirm password</string>
+    <string name="password_min_length">Minimum 8 characters</string>
+    <string name="invite_code_label">Invite code</string>
+    <string name="invite_code_hint">Ask whoever invited you for the code</string>
+    <string name="passwords_not_match">Passwords do not match</string>
+
+    <!-- Login -->
+    <string name="app_title">Mom's Recipes</string>
+    <string name="login_subtitle">Sign in to continue</string>
+    <string name="login_button">Sign in</string>
+    <string name="no_account">No account? </string>
+    <string name="register_link">Sign up</string>
+    <string name="forgot_password_link">Forgot password?</string>
+
+    <!-- Register -->
+    <string name="register_title">Registration</string>
+    <string name="register_subtitle">Join the Recipe Book</string>
+    <string name="email_label">Email</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="create_account_button">Create account</string>
+    <string name="already_have_account">Already have an account? </string>
+
+    <!-- Forgot password -->
+    <string name="forgot_password_title">Password recovery</string>
+    <string name="forgot_password_description">Enter the email linked to your account. We will send a password reset code.</string>
+    <string name="invalid_email_short">Invalid email</string>
+    <string name="send_code_button">Send code</string>
+    <string name="already_have_code">I already have a code</string>
+    <string name="code_sent_to">Code sent to %1$s</string>
+    <string name="send_error">Failed to send</string>
+
+    <!-- Reset password -->
+    <string name="new_password_title">New password</string>
+    <string name="reset_password_description">Enter the code from your email and a new password</string>
+    <string name="reset_code_label">Reset code</string>
+    <string name="new_password_label">New password</string>
+    <string name="change_password_button">Change password</string>
+    <string name="reset_error">Password reset error</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="greeting">Hello,</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="trash">Trash</string>
+    <string name="logout">Sign out</string>
+    <string name="editing_title">Editing</string>
+    <string name="language_label">Language</string>
+    <string name="change_password_section">Change password</string>
+    <string name="current_password_label">Current password</string>
+    <string name="saved_message">Saved</string>
+    <string name="choose_language">Choose language</string>
+    <string name="login_to_manage">Sign in to\nmanage recipes</string>
+    <string name="no_account_register">No account? Sign up</string>
+    <string name="login_error">Login error</string>
+
+    <!-- Recipe details -->
+    <string name="nutrition_title">NUTRITION PER 100G</string>
+    <string name="kcal">kcal</string>
+    <string name="protein_short">P</string>
+    <string name="fat_short">F</string>
+    <string name="carbs_short">C</string>
+    <string name="grams_short">g</string>
+    <string name="categories_title">CATEGORIES</string>
+    <string name="ingredients_title">INGREDIENTS</string>
+    <string name="no_ingredients">No ingredients added yet</string>
+    <string name="notes_title">NOTES</string>
+    <string name="no_notes">No notes yet</string>
+    <string name="add_note_placeholder">Add a note...</string>
+    <string name="unknown_user">Unknown</string>
+    <string name="delete_note">Delete note</string>
+    <string name="photos_title">PHOTOS</string>
+    <string name="photo_content_description">Photo %1$d</string>
+    <string name="videos_title">VIDEOS</string>
+    <string name="watch_video">Watch video</string>
+
+    <!-- Edit recipe -->
+    <string name="edit_recipe_title">Edit recipe</string>
+    <string name="copy_recipe_title">Recipe copy</string>
+    <string name="copy_suffix"> (copy)</string>
+    <string name="recipe_name_label">Recipe name</string>
+    <string name="description_label">Description</string>
+    <string name="ingredients_section">Ingredients</string>
+    <string name="add_ingredient">Add ingredient</string>
+    <string name="categories_section">Categories</string>
+    <string name="photo_section">Photo</string>
+    <string name="upload_photo">Upload photo</string>
+    <string name="add_photo_link">Add link</string>
+    <string name="replace_photo">Replace</string>
+    <string name="remove_photo">Remove</string>
+    <string name="uploaded_photo">Uploaded photo</string>
+    <string name="photo_extras_hint">A recipe now has one photo. Remove these older ones to keep only the photo above.</string>
+    <string name="uploading">Uploading...</string>
+    <string name="photo_url_label">Photo URL</string>
+    <string name="photo_description">Photo</string>
+    <string name="videos_links_section">Videos (links)</string>
+    <string name="video_url_label">Video URL</string>
+    <string name="add_video">Add video</string>
+
+    <!-- Create recipe -->
+    <string name="new_recipe_title">New recipe</string>
+
+    <!-- Recipes list -->
+    <string name="search_recipes_placeholder">Search recipes...</string>
+    <string name="search">Search</string>
+    <string name="categories_button">Categories</string>
+    <string name="profile_button">Profile</string>
+    <string name="create_recipe">Create recipe</string>
+    <string name="empty_home_title">You don't have any recipes yet</string>
+    <string name="empty_home_message">Tap + to create your first recipe, or have a look at Public.</string>
+    <string name="empty_public_title">No public recipes yet</string>
+    <string name="empty_public_message">Check back later — recipes shared by others will appear here.</string>
+    <string name="empty_shared_title">Nothing here yet</string>
+    <string name="empty_shared_message">Recipes others open to the family or let you edit will appear here.</string>
+    <string name="search_no_results">Nothing found</string>
+    <string name="sort_label">Sort</string>
+    <string name="sort_newest">Newest first</string>
+    <string name="sort_name">By name</string>
+    <string name="sort_updated">Recently updated</string>
+
+    <!-- Categories -->
+    <string name="categories_screen_title">Categories</string>
+    <string name="no_recipes_in_category">No recipes in this category</string>
+    <string name="ingredients_count">%1$d ingredients</string>
+
+    <!-- Trash -->
+    <string name="trash_title">Trash</string>
+    <string name="trash_empty">Trash is empty</string>
+    <string name="restore">Restore</string>
+    <string name="delete_forever">Delete forever</string>
+    <string name="empty_trash_title">Empty trash?</string>
+    <string name="empty_trash_message">All recipes in the trash will be permanently deleted. This action cannot be undone.</string>
+    <string name="delete_all">Delete all</string>
+    <string name="empty_trash_button">Empty trash</string>
+    <string name="delete_forever_title">Delete forever?</string>
+    <string name="delete_forever_message">Recipe \u00AB%1$s\u00BB will be permanently deleted.</string>
+
+    <!-- App (delete dialog) -->
+    <string name="delete_recipe_title">Delete recipe?</string>
+    <string name="delete_recipe_message">The recipe will be moved to trash. You can restore it later.</string>
+    <string name="share_ingredients_header">Ingredients:</string>
+
+    <!-- Recipe details actions -->
+    <string name="share_action">Share</string>
+    <string name="copy_action">Copy</string>
+    <string name="edit_action">Edit</string>
+    <string name="back_to_recipes">Back to Recipes</string>
+    <string name="recipe_load_failed">Couldn’t refresh this recipe. Showing may be incomplete.</string>
+    <string name="retry">Retry</string>
+
+    <!-- Add ingredient dialog -->
+    <string name="add_ingredient_title">Add ingredient</string>
+    <string name="search_ingredient_placeholder">Search ingredient...</string>
+    <string name="create_ingredient">Create \u00AB%1$s\u00BB</string>
+    <string name="selected_label">Selected: %1$s</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="unit_label">Unit</string>
+    <string name="no_unit">No unit</string>
+    <string name="new_ingredient_title">New ingredient</string>
+    <string name="new_ingredient_hint">Enter values per 100 g. Without them this ingredient is left out of the recipe’s nutrition.</string>
+    <string name="calories_per_100g">Calories per 100 g</string>
+    <string name="protein_per_100g">Protein per 100 g</string>
+    <string name="fat_per_100g">Fat per 100 g</string>
+    <string name="carbs_per_100g">Carbs per 100 g</string>
+    <string name="nutrition_required">Fill in all four values</string>
+    <!-- Share dialog (details screen, owner only) -->
+    <string name="share_copy_text">Copy as text</string>
+    <string name="share_copied">Copied</string>
+    <string name="done">Done</string>
+    <string name="share_copy_link">Copy link</string>
+    <string name="share_link_copied">Link copied</string>
+    <string name="link_open_failed">Couldn't open this recipe. It may have been deleted or not shared with you.</string>
+
+    <!-- Account deletion, admin family collection, legal links -->
+    <string name="delete_account">Delete account</string>
+    <string name="delete_account_title">Delete your account?</string>
+    <plurals name="delete_account_message">
+        <item quantity="one">This permanently deletes your account and your %1$d recipe (including the trash), with its notes and photos. If you shared it, it will disappear for your family too. This cannot be undone.</item>
+        <item quantity="other">This permanently deletes your account and your %1$d recipes (including those in the trash), with their notes and photos. Recipes you shared will disappear for your family too. This cannot be undone.</item>
+    </plurals>
+    <string name="delete_account_message_none">This permanently deletes your account. You have no recipes of your own, so none will be removed. This cannot be undone.</string>
+    <string name="delete_account_message_no_count">This permanently deletes your account and all your recipes (including those in the trash), with their notes and photos. Recipes you shared will disappear for your family too. This cannot be undone.</string>
+    <string name="delete_account_counting">Counting your recipes…</string>
+    <string name="delete_account_password_hint">Enter your password to confirm</string>
+    <string name="delete_account_confirm">Delete forever</string>
+    <string name="delete_account_wrong_password">Wrong password</string>
+    <string name="delete_account_admin">Admin accounts can't be deleted here. Ask the person who runs the server to remove your admin rights first.</string>
+    <string name="delete_account_rate_limited">Too many attempts. Please wait a few minutes and try again.</string>
+    <string name="delete_account_failed">Couldn't delete the account. Check your connection and try again.</string>
+    <string name="account_deleted">Account deleted</string>
+    <string name="session_ended">Your session has ended. Please sign in again.</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="support">Support</string>
+    <string name="family_collection_switch">Add to the family collection</string>
+    <string name="family_collection_hint">Owned by the family account, so it stays even if your account is deleted</string>
+    <!-- Visibility -->
+    <string name="visibility_title">Who can see this recipe</string>
+    <string name="visibility_only_me">Only me</string>
+    <string name="visibility_only_me_hint">Only you and the people you let edit it.</string>
+    <string name="visibility_family">Family</string>
+    <string name="visibility_family_hint">Everyone who has an account in this app.</string>
+    <string name="visibility_public">Public</string>
+    <string name="visibility_public_hint">Anyone, even without an account. It also appears in the Public list.</string>
+    <string name="removed_by_admin_banner">An admin removed this recipe from sharing. Reason: %1$s</string>
+    <string name="removed_by_admin_banner_no_reason">An admin removed this recipe from sharing. You can't make it Family or Public for now.</string>
+    <!-- Content rules -->
+    <string name="terms_dialog_title">Content rules</string>
+    <string name="terms_dialog_intro">Before you share a recipe with others, please accept the content rules:</string>
+    <string name="terms_rule_1">Post only recipes, photos and links that you have the right to share.</string>
+    <string name="terms_rule_2">No hateful, violent, sexual or otherwise offensive content, and no spam or advertising.</string>
+    <string name="terms_rule_3">Anyone can report a recipe. Admins may remove content or suspend accounts that break the rules.</string>
+    <string name="terms_read_full">Read the full rules</string>
+    <string name="terms_accept">Accept</string>
+    <string name="terms_accept_checkbox">I accept the content rules</string>
+    <!-- Error messages (one per server code) -->
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_network">Couldn't reach the server. Check your connection and try again.</string>
+    <string name="error_terms_required">Please accept the content rules first.</string>
+    <string name="error_blocked_word">This recipe can't be shared: the word «%1$s» isn't allowed in the name or description. Remove it, or keep the recipe Only me.</string>
+    <string name="error_blocked_word_ingredient">This ingredient can't be added: the word «%1$s» isn't allowed in its name. Choose another name.</string>
+    <string name="error_removed_by_admin">An admin removed this recipe from sharing, so it can't be made Family or Public for now.</string>
+    <string name="error_removed_by_admin_reason">An admin removed this recipe from sharing, so it can't be made Family or Public for now. Reason: %1$s</string>
+    <string name="error_owner_only">Only the recipe's owner can do this.</string>
+    <string name="error_blocked">You can't do this: one of you has blocked the other.</string>
+    <string name="error_cannot_report">You can't report your own recipe or yourself.</string>
+    <string name="error_cannot_block">You can't block this account.</string>
+    <string name="error_admin_only">Only admins can do this.</string>
+    <string name="error_account_suspended">This account has been suspended. If you think that is a mistake, write to support@example.com.</string>
+    <string name="error_user_suspended">This person's account is suspended, so they can't be added.</string>
+    <string name="error_username_taken">This username is already taken.</string>
+    <string name="error_wrong_password">Wrong password.</string>
+    <string name="error_rate_limited">Too many attempts. Please wait a while and try again.</string>
+    <string name="error_not_an_image">That file isn't a picture that can be read. Try a JPEG or PNG photo.</string>
+    <string name="error_unsupported_format">This picture format isn't supported. Try a JPEG or PNG photo.</string>
+    <string name="error_too_large">This photo is too large. Pick a smaller one.</string>
+    <string name="error_photo_limit">A recipe can have one photo. Remove the current photo first, or use Replace.</string>
+    <string name="error_photo_not_yours">This photo can't be added to this recipe.</string>
+    <string name="error_too_long">That text is too long. Please shorten it.</string>
+    <string name="error_empty_field">Please fill in all the required fields.</string>
+    <string name="error_invalid_username">The username must be 3 to 30 characters: letters, digits, dots, underscores or hyphens, with no spaces.</string>
+    <string name="error_invalid_email">That doesn't look like a valid email address.</string>
+    <string name="error_invalid_url">That link can't be used. It must be a full web link starting with http:// or https://.</string>
+    <string name="error_invalid_locale">This language isn't supported.</string>
+    <string name="error_out_of_range">A number is out of range. Check the values and try again.</string>
+    <string name="error_invalid_credentials">Wrong username or password.</string>
+    <string name="error_invalid_invite_code">That invite code isn't right.</string>
+    <string name="error_email_taken">An account with this email already exists.</string>
+    <string name="error_weak_password">That password is too short. Use at least 8 characters.</string>
+    <string name="error_admin_cannot_delete">Admin accounts can't be deleted from the app.</string>
+    <!-- Main list sections -->
+    <string name="section_mine">Mine</string>
+    <string name="section_shared">Shared</string>
+    <string name="section_public">Public</string>
+    <!-- Who can edit -->
+    <string name="editors_title">Who can edit</string>
+    <string name="editors_hint">People you pick can change this recipe's text, ingredients, photos and notes. They can't delete it or change who sees it.</string>
+    <string name="editors_none">There is no one to add yet</string>
+    <string name="editors_load_failed">Couldn't load the list of people</string>
+    <!-- Report -->
+    <string name="report_action">Report</string>
+    <string name="report_user_action">Report user</string>
+    <string name="report_recipe_title">Report this recipe</string>
+    <string name="report_user_title">Report %1$s</string>
+    <string name="report_reason_prompt">What is wrong?</string>
+    <string name="report_reason_inappropriate">Inappropriate or offensive</string>
+    <string name="report_reason_spam">Spam or advertising</string>
+    <string name="report_reason_not_theirs">Someone else's content posted as their own</string>
+    <string name="report_reason_other">Something else</string>
+    <string name="report_comment_label">Comment (optional)</string>
+    <string name="report_send">Send</string>
+    <string name="report_sent_recipe">Thank you. Your report was sent to the admins, and this recipe is now hidden for you.</string>
+    <string name="report_sent_user">Thank you. Your report was sent to the admins.</string>
+    <!-- Block -->
+    <string name="block_user_action">Block user</string>
+    <string name="block_dialog_title">Block %1$s?</string>
+    <string name="block_dialog_message">You will no longer see their recipes or notes, and they will no longer see your Family recipes. You can't add each other as editors, and anyone already added is removed. They can still see your Public recipes. You can unblock them at any time in Profile.</string>
+    <string name="block_confirm">Block</string>
+    <string name="block_done">User blocked</string>
+    <string name="blocked_users_title">Blocked users</string>
+    <string name="blocked_users_empty">You haven't blocked anyone.</string>
+    <string name="unblock">Unblock</string>
+    <string name="author_line">By %1$s</string>
+    <string name="more_actions">More</string>
+    <!-- Admin removal -->
+    <string name="admin_remove_action">Remove from public</string>
+    <string name="admin_remove_title">Remove from public?</string>
+    <string name="admin_remove_message">The recipe becomes Only me, and its owner can't share it again until you allow it. The owner will see your reason.</string>
+    <string name="admin_remove_reason_label">Reason</string>
+    <string name="admin_remove_confirm">Remove</string>
+    <string name="admin_removed_notice">Recipe removed from public view</string>
+</resources>

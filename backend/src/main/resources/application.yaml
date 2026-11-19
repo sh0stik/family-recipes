@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: recipe-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/recipe_app
+    username: postgres
+    password: ${DB_PASSWORD}
+
+  sql:
+    init:
+      mode: always
+      # Generic reference data only (units, ingredients, unit weights, category names).
+      data-locations:
+        - classpath:units_seed.sql
+        - classpath:ingredients_seed.sql
+        - classpath:ingredient_unit_weights_seed.sql
+        - classpath:categories_seed.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+
+    show-sql: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Photo uploads (photo/PhotoController). The apps send a JPEG of at most 2048 px, usually well
+  # under 2 MB; the limit leaves room for a browser or tool sending an original camera photo.
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 16MB
+
+  graphql:
+    graphiql:
+      enabled: true
+
+  mail:
+    # Any SMTP server with STARTTLS (password-reset and report emails). Sending is asynchronous and
+    # failures are only logged, so the backend starts and works without a reachable mail server.
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:587}
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+jwt:
+  secret: ${JWT_SECRET_KEY}
+recipe:
+  # Usernames with admin rights, comma separated (security/AdminService). Create the account
+  # first, then list it: a listed name that does not exist yet is reserved and cannot be
+  # registered.
+  admins: ${RECIPE_ADMINS:family}
+  # Owner of the shared family collection; admins manage its recipes from their own accounts.
+  family-account: ${RECIPE_FAMILY_ACCOUNT:family}
+  # Where uploaded photos live; served at /uploads/** (recipe/WebConfig).
+  uploads-dir: ${RECIPE_UPLOADS_DIR:uploads}
+  moderation:
+    # Words a recipe may not contain once other people can see it (moderation/BlockedWords).
+    # Comma separated. Empty uses the built-in list; "off" disables the check.
+    blocked-words: ${RECIPE_BLOCKED_WORDS:}
+    # Where reports of recipes and users are emailed (they are also stored).
+    report-email: ${RECIPE_REPORT_EMAIL:reports@example.com}

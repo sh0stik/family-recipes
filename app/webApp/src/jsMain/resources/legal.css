@@ -1,0 +1,47 @@
+/* Shared by privacy.html, support.html and delete-account.html: plain static pages, outside the Compose app, so they
+   load instantly and stay readable for App Review and for anyone without the app. */
+:root {
+    --bg: #FBF5E9;      /* sugar */
+    --text: #0F1E31;
+    --muted: #5B6676;
+    --accent: #3E8F8A;  /* primary #7AC5C1 darkened: the app's teal fails contrast as text */
+    --card: #FFFFFF;
+    --rule: #E8DFCC;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #14181E;
+        --text: #ECE7DC;
+        --muted: #A3A9B3;
+        --accent: #7AC5C1;
+        --card: #1C222A;
+        --rule: #2C333D;
+    }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+header { margin-bottom: 24px; }
+.app { color: var(--accent); font-weight: 600; letter-spacing: .02em; text-decoration: none; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 8px 0 4px; }
+h2 { font-size: 1.2rem; margin: 28px 0 8px; }
+p, li { margin: 0 0 10px; }
+ul, ol { padding-left: 1.2em; margin: 0 0 10px; }
+a { color: var(--accent); }
+.meta { color: var(--muted); font-size: .9rem; }
+.langs { margin-top: 12px; font-size: .95rem; }
+.langs a { margin-right: 14px; }
+section.lang {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 8px 20px 16px;
+    margin-bottom: 24px;
+}
+footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule); padding-top: 16px; }

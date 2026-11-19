@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    # Testcontainers' JDBC URL: the first connection starts a throwaway postgres:18 container
+    # (needs a running Docker engine), shared by every test context in the run.
+    url: jdbc:tc:postgresql:18:///recipe_app_test
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    # Spring keeps every distinct test context alive, each with its own pool, and the classes
+    # with their own properties add up: at Hikari's default of 10 the suite ran into the local
+    # Postgres' 100-connection limit ("sorry, too many clients already"). The tests run one at a
+    # time, so a few connections per context are plenty.
+    hikari:
+      maximum-pool-size: 3
+
+  sql:
+    init:
+      mode: always
+      data-locations:
+        - classpath:test_user_seed.sql
+        - classpath:units_seed.sql
+        - classpath:ingredients_seed.sql
+        - classpath:categories_seed.sql
+        - classpath:test_recipes_seed.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  graphql:
+    graphiql:
+      enabled: false
+
+  mail:
+    host: localhost
+    port: 25
+    username: test
+    password: test
+
+jwt:
+  # Test-only key (base64 of "test-only-jwt-secret-not-for-production-use"); JWT_SECRET_KEY overrides it.
+  secret: ${JWT_SECRET_KEY:dGVzdC1vbmx5LWp3dC1zZWNyZXQtbm90LWZvci1wcm9kdWN0aW9uLXVzZQ==}

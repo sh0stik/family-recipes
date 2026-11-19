@@ -1,0 +1,213 @@
+# Error codes (extensions.code): TERMS_REQUIRED, BLOCKED_WORD (extensions.word), REMOVED_BY_ADMIN,
+# TOO_LONG, EMPTY_FIELD.
+mutation CreateRecipe($name: String!, $description: String, $familyCollection: Boolean, $visibility: Visibility) {
+    createRecipe(name: $name, description: $description, familyCollection: $familyCollection, visibility: $visibility) {
+        id
+        name
+        description
+        visibility
+        createdAt
+    }
+}
+
+# `visibility` is sent only by someone who manages the recipe. The old isPublic argument still
+# exists on the server for installed apps, but this app no longer sends it.
+mutation UpdateRecipe($recipeId: ID!, $name: String, $description: String, $visibility: Visibility) {
+    updateRecipe(recipeId: $recipeId, name: $name, description: $description, visibility: $visibility) {
+        id
+        name
+        description
+        visibility
+        updatedAt
+    }
+}
+
+mutation AddIngredientToRecipe($recipeId: ID!, $ingredientId: ID!, $quantity: Float!, $unitId: ID) {
+    addIngredientToRecipe(recipeId: $recipeId, ingredientId: $ingredientId, quantity: $quantity, unitId: $unitId) {
+        id
+        ingredients {
+            id
+            quantity
+            unit {
+                id
+                name
+                abbreviation
+                type
+            }
+            ingredient {
+                id
+                name
+            }
+        }
+    }
+}
+
+mutation RemoveIngredientFromRecipe($recipeId: ID!, $ingredientId: ID!) {
+    removeIngredientFromRecipe(recipeId: $recipeId, ingredientId: $ingredientId) {
+        id
+        ingredients {
+            id
+            quantity
+            ingredient {
+                id
+                name
+            }
+        }
+    }
+}
+
+mutation AddCategoryToRecipe($recipeId: ID!, $categoryId: ID!) {
+    addCategoryToRecipe(recipeId: $recipeId, categoryId: $categoryId) {
+        id
+        categories {
+            id
+            name
+        }
+    }
+}
+
+mutation RemoveCategoryFromRecipe($recipeId: ID!, $categoryId: ID!) {
+    removeCategoryFromRecipe(recipeId: $recipeId, categoryId: $categoryId) {
+        id
+        categories {
+            id
+            name
+        }
+    }
+}
+
+mutation MoveToTrash($recipeId: ID!) {
+    moveToTrash(recipeId: $recipeId) {
+        id
+        isTrashed
+    }
+}
+
+mutation RestoreFromTrash($recipeId: ID!) {
+    restoreFromTrash(recipeId: $recipeId) {
+        id
+        isTrashed
+    }
+}
+
+mutation DeletePermanently($recipeId: ID!) {
+    deletePermanently(recipeId: $recipeId)
+}
+
+mutation EmptyTrash {
+    emptyTrash
+}
+
+mutation CopyRecipe($recipeId: ID!) {
+    copyRecipe(recipeId: $recipeId) {
+        id
+        name
+        description
+        copiedFromId
+    }
+}
+
+mutation ShareRecipe($recipeId: ID!, $userId: ID!) {
+    shareRecipe(recipeId: $recipeId, userId: $userId) {
+        id
+        sharedWith {
+            id
+            username
+        }
+    }
+}
+
+mutation UnshareRecipe($recipeId: ID!, $userId: ID!) {
+    unshareRecipe(recipeId: $recipeId, userId: $userId) {
+        id
+        sharedWith {
+            id
+            username
+        }
+    }
+}
+
+mutation AddPhotoToRecipe($recipeId: ID!, $url: String!) {
+    addPhotoToRecipe(recipeId: $recipeId, url: $url) {
+        id
+        photoUrls
+    }
+}
+
+mutation RemovePhotoFromRecipe($recipeId: ID!, $url: String!) {
+    removePhotoFromRecipe(recipeId: $recipeId, url: $url) {
+        id
+        photoUrls
+    }
+}
+
+mutation AddVideoLinkToRecipe($recipeId: ID!, $url: String!) {
+    addVideoLinkToRecipe(recipeId: $recipeId, url: $url) {
+        id
+        videoLinks
+    }
+}
+
+mutation RemoveVideoLinkFromRecipe($recipeId: ID!, $url: String!) {
+    removeVideoLinkFromRecipe(recipeId: $recipeId, url: $url) {
+        id
+        videoLinks
+    }
+}
+
+mutation CreateIngredient($name: String!, $caloriesPer100g: Float!, $proteinPer100g: Float!, $fatPer100g: Float!, $carbsPer100g: Float!) {
+    createIngredient(name: $name, caloriesPer100g: $caloriesPer100g, proteinPer100g: $proteinPer100g, fatPer100g: $fatPer100g, carbsPer100g: $carbsPer100g) {
+        id
+        name
+        caloriesPer100g
+        proteinPer100g
+        fatPer100g
+        carbsPer100g
+    }
+}
+
+mutation AddNote($recipeId: ID!, $note: String!) {
+    addNote(recipeId: $recipeId, note: $note) {
+        id
+        note
+        createdAt
+        user {
+            id
+            username
+        }
+    }
+}
+
+mutation DeleteNote($noteId: ID!) {
+    deleteNote(noteId: $noteId)
+}
+
+mutation AcceptTerms {
+    acceptTerms {
+        id
+        termsAcceptedAt
+    }
+}
+
+# Error codes: CANNOT_REPORT, TOO_LONG, RATE_LIMITED.
+mutation ReportRecipe($recipeId: ID!, $reason: ReportReason!, $comment: String) {
+    reportRecipe(recipeId: $recipeId, reason: $reason, comment: $comment)
+}
+
+mutation ReportUser($userId: ID!, $reason: ReportReason!, $comment: String) {
+    reportUser(userId: $userId, reason: $reason, comment: $comment)
+}
+
+# Error codes: CANNOT_BLOCK.
+mutation BlockUser($userId: ID!) {
+    blockUser(userId: $userId)
+}
+
+mutation UnblockUser($userId: ID!) {
+    unblockUser(userId: $userId)
+}
+
+# Admins only (ADMIN_ONLY otherwise). Sets the recipe to Only me and locks it.
+mutation AdminUnpublishRecipe($recipeId: ID!, $reason: String!) {
+    adminUnpublishRecipe(recipeId: $recipeId, reason: $reason)
+}

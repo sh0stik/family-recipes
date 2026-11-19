@@ -1,0 +1,303 @@
+<resources>
+    <!-- Common -->
+    <string name="back">Назад</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
+    <string name="add">Добавить</string>
+
+    <!-- Auth common -->
+    <string name="username_label">Имя пользователя</string>
+    <string name="password_label">Пароль</string>
+    <string name="confirm_password_label">Подтвердите пароль</string>
+    <string name="password_min_length">Минимум 8 символов</string>
+    <string name="invite_code_label">Код приглашения</string>
+    <string name="invite_code_hint">Спросите код у того, кто вас пригласил</string>
+    <string name="passwords_not_match">Пароли не совпадают</string>
+
+    <!-- Login -->
+    <string name="app_title">Mom's Recipes</string>
+    <string name="login_subtitle">Войдите, чтобы продолжить</string>
+    <string name="login_button">Войти</string>
+    <string name="no_account">Нет аккаунта? </string>
+    <string name="register_link">Зарегистрироваться</string>
+    <string name="forgot_password_link">Забыли пароль?</string>
+
+    <!-- Register -->
+    <string name="register_title">Регистрация</string>
+    <string name="register_subtitle">Присоединяйтесь к Книге рецептов</string>
+    <string name="email_label">Эл. почта</string>
+    <string name="invalid_email">Некорректный адрес эл. почты</string>
+    <string name="create_account_button">Создать аккаунт</string>
+    <string name="already_have_account">Уже есть аккаунт? </string>
+
+    <!-- Forgot password -->
+    <string name="forgot_password_title">Восстановление пароля</string>
+    <string name="forgot_password_description">Введите email, привязанный к аккаунту. Мы отправим код для сброса пароля.</string>
+    <string name="invalid_email_short">Некорректный email</string>
+    <string name="send_code_button">Отправить код</string>
+    <string name="already_have_code">У меня уже есть код</string>
+    <string name="code_sent_to">Код отправлен на %1$s</string>
+    <string name="send_error">Ошибка отправки</string>
+
+    <!-- Reset password -->
+    <string name="new_password_title">Новый пароль</string>
+    <string name="reset_password_description">Введите код из письма и новый пароль</string>
+    <string name="reset_code_label">Код сброса</string>
+    <string name="new_password_label">Новый пароль</string>
+    <string name="change_password_button">Сменить пароль</string>
+    <string name="reset_error">Ошибка сброса пароля</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Профиль</string>
+    <string name="greeting">Привет,</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="trash">Корзина</string>
+    <string name="logout">Выйти</string>
+    <string name="editing_title">Редактирование</string>
+    <string name="language_label">Язык</string>
+    <string name="change_password_section">Сменить пароль</string>
+    <string name="current_password_label">Текущий пароль</string>
+    <string name="saved_message">Сохранено</string>
+    <string name="choose_language">Выберите язык</string>
+    <string name="login_to_manage">Войдите, чтобы\nуправлять рецептами</string>
+    <string name="no_account_register">Нет аккаунта? Зарегистрироваться</string>
+    <string name="login_error">Ошибка входа</string>
+
+    <!-- Recipe details -->
+    <string name="nutrition_title">ПИЩЕВАЯ ЦЕННОСТЬ НА 100Г</string>
+    <string name="kcal">ккал</string>
+    <string name="protein_short">Б</string>
+    <string name="fat_short">Ж</string>
+    <string name="carbs_short">У</string>
+    <string name="grams_short">г</string>
+    <string name="categories_title">КАТЕГОРИИ</string>
+    <string name="ingredients_title">ИНГРЕДИЕНТЫ</string>
+    <string name="no_ingredients">Ингредиенты ещё не добавлены</string>
+    <string name="notes_title">ЗАМЕТКИ</string>
+    <string name="no_notes">Заметок пока нет</string>
+    <string name="add_note_placeholder">Добавить заметку...</string>
+    <string name="unknown_user">Неизвестно</string>
+    <string name="delete_note">Удалить заметку</string>
+    <string name="photos_title">ФОТО</string>
+    <string name="photo_content_description">Фото %1$d</string>
+    <string name="videos_title">ВИДЕО</string>
+    <string name="watch_video">Смотреть видео</string>
+
+    <!-- Edit recipe -->
+    <string name="edit_recipe_title">Редактировать рецепт</string>
+    <string name="copy_recipe_title">Копия рецепта</string>
+    <string name="copy_suffix"> (копия)</string>
+    <string name="recipe_name_label">Название рецепта</string>
+    <string name="description_label">Описание</string>
+    <string name="ingredients_section">Ингредиенты</string>
+    <string name="add_ingredient">Добавить ингредиент</string>
+    <string name="categories_section">Категории</string>
+    <string name="photo_section">Фото</string>
+    <string name="upload_photo">Загрузить фото</string>
+    <string name="add_photo_link">Добавить ссылку</string>
+    <string name="replace_photo">Заменить</string>
+    <string name="remove_photo">Удалить</string>
+    <string name="uploaded_photo">Загруженное фото</string>
+    <string name="photo_extras_hint">Теперь у рецепта одно фото. Удалите эти старые, чтобы осталось только фото выше.</string>
+    <string name="uploading">Загрузка...</string>
+    <string name="photo_url_label">Ссылка на фото</string>
+    <string name="photo_description">Фото</string>
+    <string name="videos_links_section">Видео (ссылки)</string>
+    <string name="video_url_label">Ссылка на видео</string>
+    <string name="add_video">Добавить видео</string>
+
+    <!-- Create recipe -->
+    <string name="new_recipe_title">Новый рецепт</string>
+
+    <!-- Recipes list -->
+    <string name="search_recipes_placeholder">Поиск рецептов...</string>
+    <string name="search">Поиск</string>
+    <string name="categories_button">Категории</string>
+    <string name="profile_button">Профиль</string>
+    <string name="create_recipe">Создать рецепт</string>
+    <string name="empty_home_title">У вас пока нет рецептов</string>
+    <string name="empty_home_message">Нажмите +, чтобы создать первый рецепт, или загляните в раздел «Для всех».</string>
+    <string name="empty_public_title">Рецептов для всех пока нет</string>
+    <string name="empty_public_message">Зайдите позже — здесь появятся рецепты, которыми поделились другие.</string>
+    <string name="empty_shared_title">Здесь пока пусто</string>
+    <string name="empty_shared_message">Сюда попадут рецепты, которые другие открыли для семьи или разрешили вам редактировать.</string>
+    <string name="search_no_results">Ничего не найдено</string>
+    <string name="sort_label">Сортировка</string>
+    <string name="sort_newest">Сначала новые</string>
+    <string name="sort_name">По названию</string>
+    <string name="sort_updated">Недавно обновлённые</string>
+
+    <!-- Categories -->
+    <string name="categories_screen_title">Категории</string>
+    <string name="no_recipes_in_category">Нет рецептов в этой категории</string>
+    <string name="ingredients_count">%1$d ингредиентов</string>
+
+    <!-- Trash -->
+    <string name="trash_title">Корзина</string>
+    <string name="trash_empty">Корзина пуста</string>
+    <string name="restore">Восстановить</string>
+    <string name="delete_forever">Удалить навсегда</string>
+    <string name="empty_trash_title">Очистить корзину?</string>
+    <string name="empty_trash_message">Все рецепты в корзине будут удалены навсегда. Это действие нельзя отменить.</string>
+    <string name="delete_all">Удалить всё</string>
+    <string name="empty_trash_button">Очистить корзину</string>
+    <string name="delete_forever_title">Удалить навсегда?</string>
+    <string name="delete_forever_message">Рецепт \u00AB%1$s\u00BB будет удалён безвозвратно.</string>
+
+    <!-- App (delete dialog) -->
+    <string name="delete_recipe_title">Удалить рецепт?</string>
+    <string name="delete_recipe_message">Рецепт будет перемещён в корзину. Вы сможете восстановить его позже.</string>
+    <string name="share_ingredients_header">Ингредиенты:</string>
+
+    <!-- Recipe details actions -->
+    <string name="share_action">Поделиться</string>
+    <string name="copy_action">Копировать</string>
+    <string name="edit_action">Редактировать</string>
+    <string name="back_to_recipes">Назад к рецептам</string>
+    <string name="recipe_load_failed">Не удалось обновить рецепт. Возможно, показаны не все данные.</string>
+    <string name="retry">Повторить</string>
+
+    <!-- Add ingredient dialog -->
+    <string name="add_ingredient_title">Добавить ингредиент</string>
+    <string name="search_ingredient_placeholder">Поиск ингредиента...</string>
+    <string name="create_ingredient">Создать \u00AB%1$s\u00BB</string>
+    <string name="selected_label">Выбрано: %1$s</string>
+    <string name="quantity_label">Количество</string>
+    <string name="unit_label">Единица</string>
+    <string name="no_unit">Без единицы</string>
+    <string name="new_ingredient_title">Новый ингредиент</string>
+    <string name="new_ingredient_hint">Укажите значения на 100 г. Без них ингредиент не учтётся в пищевой ценности рецепта.</string>
+    <string name="calories_per_100g">Калории на 100 г</string>
+    <string name="protein_per_100g">Белки на 100 г</string>
+    <string name="fat_per_100g">Жиры на 100 г</string>
+    <string name="carbs_per_100g">Углеводы на 100 г</string>
+    <string name="nutrition_required">Заполните все четыре поля</string>
+    <!-- Share dialog (details screen, owner only) -->
+    <string name="share_copy_text">Скопировать текстом</string>
+    <string name="share_copied">Скопировано</string>
+    <string name="done">Готово</string>
+    <string name="share_copy_link">Скопировать ссылку</string>
+    <string name="share_link_copied">Ссылка скопирована</string>
+    <string name="link_open_failed">Не удалось открыть рецепт. Возможно, он удалён или к нему нет доступа.</string>
+
+    <!-- Account deletion, admin family collection, legal links -->
+    <string name="delete_account">Удалить аккаунт</string>
+    <string name="delete_account_title">Удалить аккаунт?</string>
+    <plurals name="delete_account_message">
+        <item quantity="one">Аккаунт будет удалён навсегда вместе с %1$d вашим рецептом (включая корзину), его заметками и фото. Если вы им поделились, он пропадёт и у семьи. Отменить это нельзя.</item>
+        <item quantity="few">Аккаунт будет удалён навсегда вместе с %1$d вашими рецептами (включая корзину), заметками и фото. Рецепты, которыми вы поделились, пропадут и у семьи. Отменить это нельзя.</item>
+        <item quantity="many">Аккаунт будет удалён навсегда вместе с %1$d вашими рецептами (включая корзину), заметками и фото. Рецепты, которыми вы поделились, пропадут и у семьи. Отменить это нельзя.</item>
+        <item quantity="other">Аккаунт будет удалён навсегда вместе с %1$d вашего рецепта (включая корзину), заметками и фото. Рецепты, которыми вы поделились, пропадут и у семьи. Отменить это нельзя.</item>
+    </plurals>
+    <string name="delete_account_message_none">Аккаунт будет удалён навсегда. Своих рецептов у вас нет, так что удалять больше нечего. Отменить это нельзя.</string>
+    <string name="delete_account_message_no_count">Аккаунт будет удалён навсегда вместе со всеми вашими рецептами (включая корзину), заметками и фото. Рецепты, которыми вы поделились, пропадут и у семьи. Отменить это нельзя.</string>
+    <string name="delete_account_counting">Считаем ваши рецепты…</string>
+    <string name="delete_account_password_hint">Введите пароль для подтверждения</string>
+    <string name="delete_account_confirm">Удалить навсегда</string>
+    <string name="delete_account_wrong_password">Неверный пароль</string>
+    <string name="delete_account_admin">Аккаунт администратора нельзя удалить здесь. Попросите того, кто управляет сервером, сначала снять с вас права администратора.</string>
+    <string name="delete_account_rate_limited">Слишком много попыток. Подождите несколько минут и попробуйте снова.</string>
+    <string name="delete_account_failed">Не удалось удалить аккаунт. Проверьте соединение и попробуйте снова.</string>
+    <string name="account_deleted">Аккаунт удалён</string>
+    <string name="session_ended">Сеанс завершён. Войдите снова.</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="support">Поддержка</string>
+    <string name="family_collection_switch">В семейную коллекцию</string>
+    <string name="family_collection_hint">Владелец — семейный аккаунт, поэтому рецепт останется, даже если ваш аккаунт удалят</string>
+    <!-- Visibility -->
+    <string name="visibility_title">Кто видит этот рецепт</string>
+    <string name="visibility_only_me">Только я</string>
+    <string name="visibility_only_me_hint">Только вы и те, кому вы разрешили редактировать.</string>
+    <string name="visibility_family">Семья</string>
+    <string name="visibility_family_hint">Все, у кого есть аккаунт в приложении.</string>
+    <string name="visibility_public">Для всех</string>
+    <string name="visibility_public_hint">Любой человек, даже без аккаунта. Рецепт появится и в списке «Для всех».</string>
+    <string name="removed_by_admin_banner">Администратор убрал этот рецепт из общего доступа. Причина: %1$s</string>
+    <string name="removed_by_admin_banner_no_reason">Администратор убрал этот рецепт из общего доступа. Пока его нельзя сделать «Семья» или «Для всех».</string>
+    <!-- Content rules -->
+    <string name="terms_dialog_title">Правила публикации</string>
+    <string name="terms_dialog_intro">Прежде чем делиться рецептом с другими, примите правила публикации:</string>
+    <string name="terms_rule_1">Публикуйте только то, чем вы вправе делиться: рецепты, фото и ссылки.</string>
+    <string name="terms_rule_2">Никакого оскорбительного, жестокого или непристойного содержания, спама и рекламы.</string>
+    <string name="terms_rule_3">На любой рецепт можно пожаловаться. Администраторы могут удалить содержание или заблокировать аккаунт, нарушающий правила.</string>
+    <string name="terms_read_full">Читать правила полностью</string>
+    <string name="terms_accept">Принимаю</string>
+    <string name="terms_accept_checkbox">Я принимаю правила публикации</string>
+    <!-- Error messages (one per server code) -->
+    <string name="error_generic">Что-то пошло не так. Попробуйте ещё раз.</string>
+    <string name="error_network">Не удалось связаться с сервером. Проверьте подключение и попробуйте ещё раз.</string>
+    <string name="error_terms_required">Сначала примите правила публикации.</string>
+    <string name="error_blocked_word">Этим рецептом нельзя делиться: слово «%1$s» не разрешено в названии и описании. Уберите его или оставьте рецепт «Только я».</string>
+    <string name="error_blocked_word_ingredient">Этот ингредиент нельзя добавить: слово «%1$s» не разрешено в названии. Выберите другое название.</string>
+    <string name="error_removed_by_admin">Администратор убрал этот рецепт из общего доступа, поэтому пока его нельзя сделать «Семья» или «Для всех».</string>
+    <string name="error_removed_by_admin_reason">Администратор убрал этот рецепт из общего доступа, поэтому пока его нельзя сделать «Семья» или «Для всех». Причина: %1$s</string>
+    <string name="error_owner_only">Это может сделать только владелец рецепта.</string>
+    <string name="error_blocked">Это невозможно: один из вас заблокировал другого.</string>
+    <string name="error_cannot_report">Нельзя пожаловаться на свой рецепт или на себя.</string>
+    <string name="error_cannot_block">Этот аккаунт заблокировать нельзя.</string>
+    <string name="error_admin_only">Это могут делать только администраторы.</string>
+    <string name="error_account_suspended">Этот аккаунт заблокирован администратором. Если это ошибка, напишите на support@example.com.</string>
+    <string name="error_user_suspended">Аккаунт этого человека заблокирован, поэтому добавить его нельзя.</string>
+    <string name="error_username_taken">Это имя пользователя уже занято.</string>
+    <string name="error_wrong_password">Неверный пароль.</string>
+    <string name="error_rate_limited">Слишком много попыток. Подождите немного и попробуйте ещё раз.</string>
+    <string name="error_not_an_image">Не удалось прочитать этот файл как изображение. Попробуйте фото в формате JPEG или PNG.</string>
+    <string name="error_unsupported_format">Этот формат изображения не поддерживается. Попробуйте JPEG или PNG.</string>
+    <string name="error_too_large">Фото слишком большое. Выберите другое.</string>
+    <string name="error_photo_limit">У рецепта может быть только одно фото. Сначала удалите текущее или нажмите «Заменить».</string>
+    <string name="error_photo_not_yours">Это фото нельзя добавить к этому рецепту.</string>
+    <string name="error_too_long">Слишком длинный текст. Сократите его.</string>
+    <string name="error_empty_field">Заполните все обязательные поля.</string>
+    <string name="error_invalid_username">Имя пользователя: от 3 до 30 символов — буквы, цифры, точка, подчёркивание или дефис, без пробелов.</string>
+    <string name="error_invalid_email">Похоже, это не адрес электронной почты.</string>
+    <string name="error_invalid_url">Эту ссылку нельзя использовать. Нужна полная ссылка, которая начинается с http:// или https://.</string>
+    <string name="error_invalid_locale">Этот язык не поддерживается.</string>
+    <string name="error_out_of_range">Число вне допустимого диапазона. Проверьте значения и попробуйте ещё раз.</string>
+    <string name="error_invalid_credentials">Неверное имя пользователя или пароль.</string>
+    <string name="error_invalid_invite_code">Неверный код приглашения.</string>
+    <string name="error_email_taken">Аккаунт с такой почтой уже существует.</string>
+    <string name="error_weak_password">Слишком короткий пароль. Нужно не меньше 8 символов.</string>
+    <string name="error_admin_cannot_delete">Аккаунт администратора нельзя удалить из приложения.</string>
+    <!-- Main list sections -->
+    <string name="section_mine">Мои</string>
+    <string name="section_shared">Общие</string>
+    <string name="section_public">Для всех</string>
+    <!-- Who can edit -->
+    <string name="editors_title">Кто может редактировать</string>
+    <string name="editors_hint">Выбранные люди смогут менять текст, ингредиенты, фото и заметки. Удалить рецепт или изменить, кто его видит, они не смогут.</string>
+    <string name="editors_none">Пока некого добавить</string>
+    <string name="editors_load_failed">Не удалось загрузить список людей</string>
+    <!-- Report -->
+    <string name="report_action">Пожаловаться</string>
+    <string name="report_user_action">Пожаловаться на пользователя</string>
+    <string name="report_recipe_title">Пожаловаться на рецепт</string>
+    <string name="report_user_title">Пожаловаться на %1$s</string>
+    <string name="report_reason_prompt">В чём проблема?</string>
+    <string name="report_reason_inappropriate">Неприемлемое или оскорбительное содержание</string>
+    <string name="report_reason_spam">Спам или реклама</string>
+    <string name="report_reason_not_theirs">Чужой материал, выданный за свой</string>
+    <string name="report_reason_other">Другое</string>
+    <string name="report_comment_label">Комментарий (необязательно)</string>
+    <string name="report_send">Отправить</string>
+    <string name="report_sent_recipe">Спасибо. Жалоба отправлена администраторам, а этот рецепт теперь скрыт для вас.</string>
+    <string name="report_sent_user">Спасибо. Жалоба отправлена администраторам.</string>
+    <!-- Block -->
+    <string name="block_user_action">Заблокировать пользователя</string>
+    <string name="block_dialog_title">Заблокировать пользователя %1$s?</string>
+    <string name="block_dialog_message">Вы больше не увидите его рецепты и заметки, а он не увидит ваши рецепты с доступом «Семья». Вы не сможете добавлять друг друга в редакторы, а уже добавленные будут убраны. Ваши рецепты «Для всех» он по-прежнему увидит. Разблокировать можно в любой момент в профиле.</string>
+    <string name="block_confirm">Заблокировать</string>
+    <string name="block_done">Пользователь заблокирован</string>
+    <string name="blocked_users_title">Заблокированные</string>
+    <string name="blocked_users_empty">Вы никого не заблокировали.</string>
+    <string name="unblock">Разблокировать</string>
+    <string name="author_line">Автор: %1$s</string>
+    <string name="more_actions">Ещё</string>
+    <!-- Admin removal -->
+    <string name="admin_remove_action">Убрать из общего доступа</string>
+    <string name="admin_remove_title">Убрать из общего доступа?</string>
+    <string name="admin_remove_message">Рецепт станет «Только я», и владелец не сможет снова открыть его другим, пока вы не разрешите. Владелец увидит вашу причину.</string>
+    <string name="admin_remove_reason_label">Причина</string>
+    <string name="admin_remove_confirm">Убрать</string>
+    <string name="admin_removed_notice">Рецепт убран из общего доступа</string>
+</resources>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- Recipe links open this page at /recipe/<id> (nginx falls back to index.html). Every URL
+         below and the ones Compose fetches at runtime (skiko.wasm, composeResources/...) are
+         relative, so without this base they would resolve under /recipe/ and nginx would answer
+         each of them with index.html. Must stay the first element that uses a URL. -->
+    <base href="/">
+    <link rel="manifest" href="manifest.json"/>
+    <!-- Browsers request /favicon.ico by default and got a 404, leaving a blank tab icon.
+         PNG favicons are honoured by every browser this app targets, so no .ico is needed.
+         apple-touch-icon is what iOS uses for "Add to Home Screen" -- without it Safari
+         screenshots the page instead, which is the difference between a real-looking app on
+         the home screen and a thumbnail of a recipe list. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon-32.png"/>
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon-180.png"/>
+    <meta name="theme-color" content="#7AC5C1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <title>Mom's Recipes</title>
+</head>
+<body>
+    <!-- ComposeViewport attaches to <body>; it creates and sizes its own canvas.
+         A hand-written <canvas id="ComposeTarget"> is left over from the template and
+         is not what this entry point uses. The script is loaded once, at the end of
+         <body>: the template loaded it in <head> AND here, which ran main() twice. -->
+    <!-- skiko.js must load first: it instantiates the Skia WASM module that provides the
+         org_jetbrains_skia_* symbols composeApp.js calls into. Without it the app throws
+         "org_jetbrains_skia_Paint__1nMake is not defined" on first paint and renders
+         nothing. The template never referenced it.
+
+         skiko.js instantiates skiko.wasm ASYNCHRONOUSLY. Loading composeApp.js in the next
+         <script> tag races that: the symbols exist but the WASM runtime behind them isn't
+         ready yet, so the very first Skia call throws "...is not a function". A pre-declared
+         global `Module.onRuntimeInitialized` does NOT work as a wait mechanism here: skiko.js
+         overwrites `Module['onRuntimeInitialized']` itself (to resolve its own internal
+         promise), clobbering anything set before it loads.
+
+         The mechanism skiko.js actually exposes is a global `onWasmReady(callback)` function
+         (merged into skiko.js from Skiko's own setup.js at build time). It is a plain
+         top-level `function` declaration, not wrapped in a module/factory, so it becomes a
+         global as soon as the skiko.js <script> tag finishes executing -- synchronously,
+         well before the WASM itself is ready. Calling it registers `callback` to run once the
+         WASM runtime actually initializes. composeApp.js itself never calls onWasmReady --
+         Compose's JS output has no knowledge of Skiko's loading contract -- so the entry
+         point (this file) has to be the one to wait, by injecting composeApp.js only inside
+         that callback. -->
+    <script src="skiko.js"></script>
+    <script>
+        onWasmReady(function () {
+            var script = document.createElement("script");
+            script.src = "composeApp.js";
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+// Your Apple Developer team ID (Xcode > Signing & Capabilities). Left empty in this repo.
+TEAM_ID=
+BUNDLE_ID=com.daria.recipes
+APP_NAME=RecipeBook
+
+// Build number (CFBundleVersion). Local builds use 1; a release pipeline can override it (e.g.
+// with the git commit count) so every upload gets a new, increasing number.
+CURRENT_PROJECT_VERSION=1

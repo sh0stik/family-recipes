@@ -1,0 +1,242 @@
+type Query {
+    recipes: [Recipe]!
+    myRecipes: [Recipe]!
+    # Other people's FAMILY recipes, plus the recipes the caller is an editor of.
+    sharedWithMeRecipes: [Recipe]!
+    publicRecipes: [Recipe]!
+    trashedRecipes: [Recipe]!
+    recipe(id: ID!): Recipe
+    allIngredients: [Ingredient]!
+    allCategories: [Category]!
+    allUnits: [Unit]!
+    # The people who can be made editors: everyone but the family account, suspended accounts and
+    # anyone on either side of a block with the caller.
+    users: [User]!
+    me: User!
+    # The people the caller blocked, most recent first.
+    blockedUsers: [User!]!
+    # Every report, newest first. Admins only (ADMIN_ONLY otherwise).
+    reports: [Report!]!
+    searchRecipes(keyword: String, categoryId: ID, ingredientName: String): [Recipe]!
+}
+
+type User {
+    id: ID!
+    username: String!
+    # Only the account owner sees it; null for anyone else (UserController.email).
+    email: String
+    # True only on your own record, and only if you are an admin.
+    isAdmin: Boolean!
+    preferredLocale: String!
+    # When this account accepted the content rules; null if it has not. Only on your own record.
+    termsAcceptedAt: String
+    createdAt: String
+    updatedAt: String
+}
+
+type Mutation {
+    #Recipes
+    # familyCollection: admins only — the family account becomes the owner.
+    # visibility defaults to ONLY_ME. FAMILY or PUBLIC can be refused: see updateRecipe.
+    createRecipe(name: String!, description: String, familyCollection: Boolean, visibility: Visibility): Recipe!
+    # The ingredient list is shared by everyone, guests included: answers TERMS_REQUIRED until the
+    # caller has accepted the content rules, and BLOCKED_WORD (word in extensions.word) for a blocked word.
+    createIngredient(name: String!, caloriesPer100g: Float!, proteinPer100g: Float!, fatPer100g: Float!, carbsPer100g: Float!): Ingredient!
+    addIngredientToRecipe(recipeId: ID!, ingredientId: ID!, quantity: Float!, unitId: ID): Recipe!
+    # isPublic is the pre-visibility argument, kept for installed apps: true -> PUBLIC; false takes a
+    # PUBLIC recipe to ONLY_ME and leaves a FAMILY one alone. If both are given, visibility wins.
+    # Opening a recipe up to more people answers TERMS_REQUIRED until the caller has accepted the
+    # content rules. A FAMILY or PUBLIC recipe whose name or description contains a blocked word
+    # answers BLOCKED_WORD, with the word in extensions.word.
+    updateRecipe(recipeId: ID!, name: String, description: String, isPublic: Boolean, visibility: Visibility): Recipe!
+    removeIngredientFromRecipe(recipeId: ID!, ingredientId: ID!): Recipe!
+    removeCategoryFromRecipe(recipeId: ID!, categoryId: ID!): Recipe!
+    #Users
+    # inviteCode is nullable so existing tests and local dev (where recipe.invite-code is blank)
+    # keep working. When the server has an invite code configured, omitting it is rejected.
+    # acceptedTerms: the sign-up form's "I accept the content rules" box. Omitted by apps released
+    # before the rules; such an account accepts later with acceptTerms.
+    createUser(username: String!, email: String!, password: String!, inviteCode: String, acceptedTerms: Boolean): String!
+    # Accepts the content rules for the caller's account. Needed before a recipe can be made FAMILY
+    # or PUBLIC (TERMS_REQUIRED otherwise). Safe to repeat.
+    acceptTerms: User!
+    # Errors: INVALID_CREDENTIALS, RATE_LIMITED, ACCOUNT_SUSPENDED (right password, but an admin
+    # stopped the account; its existing tokens answer HTTP 401).
+    login(username: String!, password: String!): String!
+    # Permanently deletes the caller's account and everything it owns. Error codes:
+    # WRONG_PASSWORD, ADMIN_CANNOT_DELETE, RATE_LIMITED.
+    deleteAccount(password: String!): Boolean!
+    requestPasswordReset(email: String!): Boolean!
+    resetPassword(token: String!, newPassword: String!): Boolean!
+    logout: Boolean!
+    # Errors: WRONG_PASSWORD (the current one), WEAK_PASSWORD, TOO_LONG, RATE_LIMITED.
+    changePassword(currentPassword: String!, newPassword: String!): Boolean!
+    # Errors: INVALID_USERNAME, USERNAME_TAKEN (also for names reserved for admins).
+    # The caller's token keeps working under the new name (tokens name the account by id).
+    updateUsername(newUsername: String!): User!
+    updatePreferredLocale(locale: String!): User!
+    #Categories
+    addCategoryToRecipe(recipeId: ID!, categoryId: ID!): Recipe!
+    #Trash
+    moveToTrash(recipeId: ID!): Recipe!
+    restoreFromTrash(recipeId: ID!): Recipe!
+    deletePermanently(recipeId: ID!): Boolean!
+    emptyTrash: Boolean!
+    #Copy
+    copyRecipe(recipeId: ID!): Recipe!
+    #Editors ("who can edit"). The names are from when sharing only granted reading.
+    # shareRecipe makes the user an editor: they can read the recipe at any visibility and change
+    # what it says, but not trash it, change its visibility or change its editors. Managers only.
+    # Errors: BLOCKED, USER_SUSPENDED (the person's account is suspended and they are not already
+    # an editor).
+    shareRecipe(recipeId: ID!, userId: ID!): Recipe!
+    # Managers remove anyone; an editor may remove themselves.
+    unshareRecipe(recipeId: ID!, userId: ID!): Recipe!
+    #Photos & Videos
+    # One photo per recipe: adding a second is refused with PHOTO_LIMIT (adding the one already
+    # there changes nothing). An /uploads/<name> URL comes from POST /api/photos and is accepted
+    # only from its uploader or someone who can see a recipe showing it (PHOTO_NOT_YOURS).
+    addPhotoToRecipe(recipeId: ID!, url: String!): Recipe!
+    removePhotoFromRecipe(recipeId: ID!, url: String!): Recipe!
+    addVideoLinkToRecipe(recipeId: ID!, url: String!): Recipe!
+    removeVideoLinkFromRecipe(recipeId: ID!, url: String!): Recipe!
+    #Moderation
+    # Reports a recipe the caller can read to the admins and hides it from the caller's own lists
+    # and search. Repeating it is harmless. Errors: CANNOT_REPORT (a recipe you manage), TOO_LONG
+    # (comment over 1000 characters), RATE_LIMITED (10 reports an hour per account).
+    reportRecipe(recipeId: ID!, reason: ReportReason!, comment: String): Boolean!
+    # Reports a person. Errors: CANNOT_REPORT (yourself), TOO_LONG, RATE_LIMITED.
+    reportUser(userId: ID!, reason: ReportReason!, comment: String): Boolean!
+    # Admins only (ADMIN_ONLY otherwise). Takes any recipe out of view: it becomes ONLY_ME and its
+    # owner cannot make it FAMILY or PUBLIC again (REMOVED_BY_ADMIN) until adminAllowPublish. The
+    # reason (required, up to 1000 characters) is shown to the owner in Recipe.removalReason.
+    adminUnpublishRecipe(recipeId: ID!, reason: String!): Boolean!
+    # Admins only. Lifts that lock; the recipe stays ONLY_ME until its owner shares it again.
+    adminAllowPublish(recipeId: ID!): Boolean!
+    # Blocks a person. The caller no longer gets their recipes (lists, search, by id) or notes; they
+    # no longer get the caller's FAMILY recipes, but still get the PUBLIC ones. Each is removed from
+    # the other's editor lists; shareRecipe then answers BLOCKED. Repeating it is harmless.
+    # Errors: CANNOT_BLOCK (yourself, or the family account).
+    blockUser(userId: ID!): Boolean!
+    # Lifts a block. Removed editor rights do not come back.
+    unblockUser(userId: ID!): Boolean!
+    #Notes
+    addNote(recipeId: ID!, note: String!): RecipeNote!
+    deleteNote(noteId: ID!): Boolean!
+}
+
+type Category {
+    id: ID!
+    name: String!
+    parentCategory: Category
+}
+
+# Who may read a recipe. ONLY_ME: the owner (and its editors). FAMILY: any signed-in user.
+# PUBLIC: anyone, signed in or not.
+enum Visibility {
+    ONLY_ME
+    FAMILY
+    PUBLIC
+}
+
+type Recipe {
+    id: ID!
+    name: String!
+    description: String
+    # Derived from visibility, for installed apps: true only when it is PUBLIC.
+    isPublic: Boolean
+    visibility: Visibility!
+    # True when an admin took the recipe out of view and it cannot be shared again yet, with the
+    # admin's reason. Both only for whoever manages the recipe; false / null for everyone else.
+    removedByAdmin: Boolean!
+    removalReason: String
+    # Whether the caller may change what it says (text, ingredients, categories, photos, videos,
+    # notes): whoever manages it, plus its editors. False for guests.
+    canEdit: Boolean!
+    # Whether the caller may trash or delete it, change its visibility and choose its editors: the
+    # owner, or an admin for a family-collection recipe. Refusing an editor here answers OWNER_ONLY.
+    canManage: Boolean!
+    isTrashed: Boolean
+    copiedFromId: ID
+    createdAt: String
+    updatedAt: String
+    user: User!
+    ingredients: [RecipeIngredient]
+    categories: [Category]
+    # The editors: people the owner lets edit the recipe. Empty unless the caller can edit it.
+    sharedWith: [User]
+    # Empty unless the caller can edit the recipe. Leaves out notes by someone the caller blocked and
+    # notes a suspended account left on other people's recipes.
+    notes: [RecipeNote]
+    photoUrls: [String]
+    videoLinks: [String]
+    nutrition: NutritionInfo
+}
+
+enum ReportReason {
+    INAPPROPRIATE
+    SPAM
+    # Someone else's content, posted as their own.
+    NOT_THEIRS
+    OTHER
+}
+
+# A report as admins read it. The recipe and the people are named as they were when it was made;
+# recipeId is null for a report about a person.
+type Report {
+    id: ID!
+    reason: ReportReason!
+    comment: String
+    createdAt: String
+    reporterUsername: String!
+    recipeId: ID
+    recipeName: String
+    # The reported person, or the reported recipe's owner.
+    reportedUserId: ID
+    reportedUsername: String
+}
+
+type RecipeIngredient {
+    id: ID!
+    quantity: Float!
+    unit: Unit
+    ingredient: Ingredient!
+}
+
+type Ingredient {
+    id: ID!
+    name: String!
+    caloriesPer100g: Float!
+    proteinPer100g: Float!
+    fatPer100g: Float!
+    carbsPer100g: Float!
+}
+
+enum UnitType {
+    WEIGHT
+    VOLUME
+    COUNT
+    OTHER
+}
+
+type Unit {
+    id: ID!
+    name: String!
+    abbreviation: String!
+    type: UnitType!
+}
+
+type NutritionInfo {
+    caloriesPer100g: Float!
+    proteinPer100g: Float!
+    fatPer100g: Float!
+    carbsPer100g: Float!
+    totalWeight: Float!
+}
+
+type RecipeNote {
+    id: ID!
+    note: String!
+    createdAt: String
+    user: User!
+}

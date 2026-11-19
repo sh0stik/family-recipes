@@ -1,0 +1,39 @@
+# Build outputs
+build/
+dist/
+out/
+.gradle/
+.kotlin/
+node_modules/
+*.class
+backend/uploads/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+local.properties
+keystore.properties
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+*.mobileprovision
+
+# IDEs and OS
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.DS_Store
+xcuserdata/
+DerivedData/
+.claude/
+
+# iOS / CocoaPods
+app/iosApp/Pods/
+app/iosApp/Podfile.lock
+app/iosApp/iosApp.xcworkspace/
+app/shared/shared.podspec

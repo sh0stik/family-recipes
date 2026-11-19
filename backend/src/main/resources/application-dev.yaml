@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/recipe_app_dev
+
+  sql:
+    init:
+      data-locations:
+        - classpath:units_seed.sql
+        - classpath:ingredients_seed.sql
+        - classpath:ingredient_unit_weights_seed.sql
+        - classpath:categories_seed.sql
+
+  jpa:
+    hibernate:
+      ddl-auto: create

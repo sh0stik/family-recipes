@@ -1,0 +1,30 @@
+query GetAllCategories {
+    allCategories {
+        id
+        name
+        parentCategory {
+            id
+            name
+        }
+    }
+}
+
+query GetAllIngredients {
+    allIngredients {
+        id
+        name
+        caloriesPer100g
+        proteinPer100g
+        fatPer100g
+        carbsPer100g
+    }
+}
+
+query GetAllUnits {
+    allUnits {
+        id
+        name
+        abbreviation
+        type
+    }
+}

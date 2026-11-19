@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/${DB_NAME:mydatabase}
+    username: ${DB_USERNAME:myuser}
+    password: ${DB_PASSWORD}
+
+  # Seed data runs ONLY when SQL_INIT_MODE=always (set it for the first boot, then
+  # change back to 'never'). All seeds use ON CONFLICT DO NOTHING, so re-running is safe.
+  # Reference data only: units, ingredients, unit weights and category names.
+  sql:
+    init:
+      mode: ${SQL_INIT_MODE:never}
+      data-locations:
+        - classpath:units_seed.sql
+        - classpath:ingredients_seed.sql
+        - classpath:ingredient_unit_weights_seed.sql
+        - classpath:categories_seed.sql
+
+  jpa:
+    hibernate:
+      # 'update' creates tables on first boot and preserves data across restarts.
+      # NEVER 'create' in prod — that drops the schema on every boot.
+      ddl-auto: update
+    show-sql: false
+
+  graphql:
+    # The apps are built against the checked-in schema and never ask the server for it, so
+    # answering __schema queries only helped someone mapping the API from outside.
+    schema:
+      introspection:
+        enabled: false
+    graphiql:
+      # Defaults to OFF: this profile is used for the public deployment, and GraphiQL
+      # is an unauthenticated interactive IDE against the live database. Set
+      # GRAPHIQL_ENABLED=true temporarily (and only locally) when debugging.
+      enabled: ${GRAPHIQL_ENABLED:false}
